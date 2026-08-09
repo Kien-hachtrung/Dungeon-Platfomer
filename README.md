@@ -11,4 +11,3 @@ AI was only used to fix bugs in the game, no content in the game is made with AI
 - spikes and enemys
 - collectable coins
 - main menu and level selection screen
-- 

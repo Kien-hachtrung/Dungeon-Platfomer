@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cbwwvfqy4158j"]
+
+[ext_resource type="Script" uid="uid://cp3sq2crf3sac" path="res://script/Menu_Button.gd" id="1_xsssc"]
+
+[node name="Menu_Button" type="CanvasLayer" unique_id=663804107]
+script = ExtResource("1_xsssc")
+
+[node name="ButtonMenu" type="Button" parent="." unique_id=1383670615]
+offset_right = 68.0
+offset_bottom = 68.0
+text = "Menu"
+
+[connection signal="pressed" from="ButtonMenu" to="." method="_on_button_menu_pressed"]

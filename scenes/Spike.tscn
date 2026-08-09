@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dafn0pya2ce05"]
+
+[ext_resource type="Texture2D" uid="uid://cb426f65l3ssl" path="res://asset/16-bit-spike-Sheet.png" id="1_0e48y"]
+[ext_resource type="PackedScene" uid="uid://bcx7to6tegb2" path="res://scenes/killbox.tscn" id="2_epypp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hol4"]
+atlas = ExtResource("1_0e48y")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_htemk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hol4")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_14cdr"]
+size = Vector2(3.5, 8)
+
+[node name="Spike" type="Node2D" unique_id=1039582613]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2008096935]
+position = Vector2(0, -7.96875)
+scale = Vector2(1, 1.0039063)
+sprite_frames = SubResource("SpriteFrames_htemk")
+
+[node name="Killbox" parent="." unique_id=21204818 instance=ExtResource("2_epypp")]
+position = Vector2(19, -5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killbox" unique_id=1097529731]
+position = Vector2(-19, 0)
+shape = SubResource("RectangleShape2D_14cdr")

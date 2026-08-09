@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bdf07qlhihgot"]
+
+[ext_resource type="Script" uid="uid://cgci4ev8somwr" path="res://script/Back_Button.gd" id="1_71yij"]
+
+[node name="Back_Button" type="CanvasLayer" unique_id=1966531730]
+script = ExtResource("1_71yij")
+
+[node name="ButtonBack" type="Button" parent="." unique_id=966931225]
+offset_right = 68.0
+offset_bottom = 68.0
+text = "Back"
+
+[connection signal="pressed" from="ButtonBack" to="." method="_on_button_back_pressed"]

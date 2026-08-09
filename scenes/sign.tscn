@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://cfx7noo5su54c"]
+
+[ext_resource type="Script" uid="uid://dpjgs88xv4ag6" path="res://script/sign.gd" id="1_8yyji"]
+[ext_resource type="Texture2D" uid="uid://b5smc4dhyshrb" path="res://asset/Dungeon Tile Set.png" id="1_kd50q"]
+[ext_resource type="PackedScene" uid="uid://cgd6v43opc80o" path="res://scenes/dialog_box.tscn" id="3_8yyji"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ge2pc"]
+atlas = ExtResource("1_kd50q")
+region = Rect2(112, 160, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_htemk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ge2pc")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_htemk"]
+size = Vector2(14, 16)
+
+[sub_resource type="GDScript" id="GDScript_ge2pc"]
+script/source = "extends CollisionShape2D
+"
+
+[sub_resource type="Animation" id="Animation_8yyji"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DialogBox:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ge2pc"]
+resource_name = "appear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DialogBox:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qkam6"]
+_data = {
+&"RESET": SubResource("Animation_8yyji"),
+&"appear": SubResource("Animation_ge2pc")
+}
+
+[node name="Sign" type="Area2D" unique_id=2002781150]
+collision_mask = 2
+script = ExtResource("1_8yyji")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=995184504]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_htemk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=676712182]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_htemk")
+script = SubResource("GDScript_ge2pc")
+
+[node name="DialogBox" parent="." unique_id=239835959 instance=ExtResource("3_8yyji")]
+visible = false
+position = Vector2(71, -25)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=639353915]
+libraries/ = SubResource("AnimationLibrary_qkam6")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="." to="CollisionShape2D" method="_on_node_2d_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

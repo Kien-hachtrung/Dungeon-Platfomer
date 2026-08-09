@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cjtsj13flth0h"]
+
+[sub_resource type="Curve" id="Curve_htemk"]
+_data = [Vector2(0.014634147, 1), 0.0, 0.0, 0, 0, Vector2(0.71707314, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_14cdr"]
+colors = PackedColorArray(0.9999983, 0.9966834, 0.6790438, 1, 1, 1, 1, 1)
+
+[node name="SignParticle" type="CPUParticles2D" unique_id=1055871786]
+amount = 30
+direction = Vector2(1, -5)
+spread = 71.42
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
+scale_amount_curve = SubResource("Curve_htemk")
+color = Color(1, 1, 0.93333334, 1)
+color_ramp = SubResource("Gradient_14cdr")
+hue_variation_min = -0.07
+hue_variation_max = -0.02

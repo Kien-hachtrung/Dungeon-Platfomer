@@ -1,0 +1,161 @@
+[gd_scene format=3 uid="uid://b7qgfyobh3f85"]
+
+[ext_resource type="Script" uid="uid://cc7j3v0hgjjrk" path="res://script/coin.gd" id="1_1ikuy"]
+[ext_resource type="Texture2D" uid="uid://bl2m054p230cx" path="res://asset/items and trap_animation/coin/coin_1.png" id="1_d14el"]
+[ext_resource type="Texture2D" uid="uid://cpdc50iaiffc" path="res://asset/items and trap_animation/coin/coin_2.png" id="2_1ikuy"]
+[ext_resource type="Texture2D" uid="uid://3irw4jukv47b" path="res://asset/items and trap_animation/coin/coin_3.png" id="3_wnlwo"]
+[ext_resource type="Texture2D" uid="uid://httlt1kwbhgc" path="res://asset/items and trap_animation/coin/coin_4.png" id="4_jig8b"]
+[ext_resource type="AudioStream" uid="uid://c4hoal3ptwhq2" path="res://asset/Audio/chieuk-coin-257878.mp3" id="6_wnlwo"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_htemk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_d14el")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_1ikuy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wnlwo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jig8b")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_htemk"]
+radius = 5.0990195
+
+[sub_resource type="Animation" id="Animation_jig8b"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_xmuha"]
+resource_name = "new_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.96666664),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kfxoj"]
+_data = {
+&"RESET": SubResource("Animation_jig8b"),
+&"new_animation": SubResource("Animation_xmuha")
+}
+
+[node name="coin" type="Area2D" unique_id=1295294845]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_1ikuy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1668421256]
+sprite_frames = SubResource("SpriteFrames_htemk")
+autoplay = "default"
+frame_progress = 0.57475334
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1389685019]
+shape = SubResource("CircleShape2D_htemk")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=186571267]
+stream = ExtResource("6_wnlwo")
+bus = &"SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=545834100]
+libraries/ = SubResource("AnimationLibrary_kfxoj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

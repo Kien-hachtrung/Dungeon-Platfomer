@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bcx7to6tegb2"]
+
+[ext_resource type="Script" uid="uid://ch05pbrv34ynx" path="res://script/killbox.gd" id="1_hsvkp"]
+
+[node name="Killbox" type="Area2D" unique_id=21204818]
+collision_mask = 2
+script = ExtResource("1_hsvkp")
+
+[node name="Timer" type="Timer" parent="." unique_id=521400287]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

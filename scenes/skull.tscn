@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://capuwbpyb61v4"]
+
+[ext_resource type="Texture2D" uid="uid://b33bglvdtytmk" path="res://asset/Character_animation/monsters_idle/skull/v2/skull_v2_1.png" id="1_8axce"]
+[ext_resource type="Script" uid="uid://tb7va5rjs8xc" path="res://script/skull.gd" id="1_w7rgt"]
+[ext_resource type="Texture2D" uid="uid://dopvcep7q0g0j" path="res://asset/Character_animation/monsters_idle/skull/v2/skull_v2_2.png" id="2_w7rgt"]
+[ext_resource type="Texture2D" uid="uid://c4fvw51nnr3dv" path="res://asset/Character_animation/monsters_idle/skull/v2/skull_v2_3.png" id="3_mfoix"]
+[ext_resource type="Texture2D" uid="uid://cy17eco8o5c0r" path="res://asset/Character_animation/monsters_idle/skull/v2/skull_v2_4.png" id="4_xmxwk"]
+[ext_resource type="PackedScene" uid="uid://bcx7to6tegb2" path="res://scenes/killbox.tscn" id="5_8emal"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_htemk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_8axce")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_w7rgt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mfoix")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xmxwk")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_htemk"]
+radius = 5.0
+
+[node name="Skull" type="Node2D" unique_id=1196942571]
+script = ExtResource("1_w7rgt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=804533234]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_htemk")
+autoplay = "default"
+frame_progress = 0.21333715
+
+[node name="Killbox" parent="AnimatedSprite2D" unique_id=21204818 instance=ExtResource("5_8emal")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Killbox" unique_id=1220515743]
+shape = SubResource("CircleShape2D_htemk")
+
+[node name="RayCastRight" type="RayCast2D" parent="." unique_id=931500038]
+position = Vector2(0, -8)
+target_position = Vector2(8, 0)
+collision_mask = 5
+collide_with_areas = true
+
+[node name="RayCastLeft" type="RayCast2D" parent="." unique_id=12217577]
+position = Vector2(0, -8)
+target_position = Vector2(-8, 0)
+collision_mask = 5
+collide_with_areas = true

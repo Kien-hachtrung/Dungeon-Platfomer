@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://c41y3c0xjk311"]
+
+[ext_resource type="Texture2D" uid="uid://b5smc4dhyshrb" path="res://asset/Dungeon Tile Set.png" id="1_hpvv5"]
+[ext_resource type="Script" uid="uid://bdc5o6kof6itr" path="res://script/door.gd" id="1_uvdjg"]
+
+[sub_resource type="Curve" id="Curve_htemk"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.99512196, 0.4044944), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvdjg"]
+atlas = ExtResource("1_hpvv5")
+region = Rect2(208, 160, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83dcw"]
+atlas = ExtResource("1_hpvv5")
+region = Rect2(192, 160, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_14cdr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvdjg")
+}],
+"loop": 1,
+"name": &"closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83dcw")
+}],
+"loop": 1,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_htemk"]
+size = Vector2(14, 31)
+
+[node name="Door" type="Area2D" unique_id=1264847049]
+collision_mask = 2
+script = ExtResource("1_uvdjg")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=194201199]
+amount = 30
+lifetime = 0.5
+speed_scale = 0.3
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 70.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_htemk")
+color = Color(0.3019608, 1, 1, 1)
+hue_variation_max = 0.7
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1921339479]
+sprite_frames = SubResource("SpriteFrames_14cdr")
+animation = &"closed"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1250078915]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_htemk")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

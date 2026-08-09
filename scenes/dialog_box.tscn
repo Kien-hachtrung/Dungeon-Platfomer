@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://cgd6v43opc80o"]
+
+[ext_resource type="Script" uid="uid://84xowdfusw3b" path="res://script/dialog_box.gd" id="1_tihiy"]
+[ext_resource type="FontFile" uid="uid://dqeavya0e65r" path="res://asset/Font/Minecraftia-Regular.ttf" id="2_tihiy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_htemk"]
+bg_color = Color(0.35680693, 0.15202928, 0.0227464, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5245231, 0.2635207, 0.058633067, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7jktm"]
+line_spacing = 0.0
+font_size = 8
+
+[node name="DialogBox" type="Node2D" unique_id=239835959]
+z_index = 10
+script = ExtResource("1_tihiy")
+dialog_text = "
+"
+
+[node name="Panel" type="Panel" parent="." unique_id=1050956569]
+offset_left = -144.0
+offset_top = -28.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_htemk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=84526589]
+offset_left = -142.0
+offset_top = -26.0
+offset_right = -2.0
+offset_bottom = -2.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=349964434]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_tihiy")
+theme_override_font_sizes/font_size = 8
+label_settings = SubResource("LabelSettings_7jktm")
+autowrap_mode = 2

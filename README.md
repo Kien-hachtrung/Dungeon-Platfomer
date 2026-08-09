@@ -6,8 +6,8 @@ Making this game was a load of fun! As a beginner myself, this has improve my sk
 AI was only used to fix bugs in the game, no content in the game is made with AI.
 
 ### Features
--5 levels to explore\n
--moving and double-jumps\n
--spikes and enemys\n
--collectable coins\n
--main menu and level selection screen
+- 5 levels to explore
+- moving and double-jumps
+- spikes and enemys
+- collectable coins
+- main menu and level selection screen

@@ -4,3 +4,5 @@
 Making this game was a load of fun! As a beginner myself, this has improve my skill for game development. Created mainly in GoDot.
 
 AI was only used to fix bugs in the game, no content in the game is made with AI.
+
+### Features
